@@ -1,36 +1,43 @@
+// A variable to store html content of table
 var html = "";
 
 function printPattern() {
+    //removing existing content of table which is stored using html variable
+    html="";
+
     var redbox = document.getElementById("box1").innerHTML;
     var whitebox = document.getElementById("box2").innerHTML;
     let n = document.getElementById("size").value;
     n = parseInt(n);
-    let k=n;
-    for(let i=1;i<=n;i++)
-    {
-        html += "<div>";
-        for(let j=1;j<k;j++)
-        {
+    let k = n;
+    for (let i = 1; i <= n; i++) {
+        html += "<tr>";
+        for (let j = 1; j < k; j++) {
+            html += "<td>";
             html += whitebox;
+            html += "</td>";
         }
-        for(let j=1;j<=i;j++)
-        {
+        for (let j = 1; j <= i; j++) {
+
+            html += "<td>";
             html += redbox;
+            html += "</td>";
+            if (j == i) break;
+            html += "<td>";
             html += whitebox;
+            html += "</td>";
+
         }
-        let len = 2*n-2*i-k+2;
-        for(let j=1;j<len;j++)
-        {
-            html += whitebox;
+        if (i != n) {
+            for (let j = 1; j < k; j++) {
+                html += "<td>";
+                html += whitebox;
+                html += "</td>";
+            }
         }
+        html += "</tr>";
         k--;
     }
-    // for (let i = 0; i < n; i++) {
-    //     html += "<div>";
-    //     for (let j = 0; j < 10; j++) {
-    //         html += redbox;
-    //     }
-    //     html += "</div>";
-    // }
-    document.getElementById("container-1").innerHTML=html;
+    
+    document.getElementById("table-1").innerHTML = html;
 }
